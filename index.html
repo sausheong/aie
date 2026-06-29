@@ -333,6 +333,60 @@
 
   .empty { padding: 40px; text-align: center; color: var(--muted); font-size: 14px; }
 
+  .reset-btn {
+    padding: 4px 12px;
+    border-radius: var(--pill-r);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 8px;
+    transition: all 0.15s;
+  }
+  .reset-btn:hover { border-color: #ef4444; color: #ef4444; }
+
+  .edited-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #a855f7;
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+
+  .modal-override {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .modal-override-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+  }
+  .override-btn {
+    padding: 5px 14px;
+    border-radius: var(--pill-r);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .override-btn:hover { color: var(--text); border-color: var(--text); }
+  .override-btn.active-primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .override-btn.active-backup  { background: var(--backup);  border-color: var(--backup);  color: #fff; }
+  .override-btn.active-other   { background: var(--surface2); border-color: var(--border); color: var(--text); }
+
   /* ── Mobile ── */
   @media (max-width: 640px) {
     header {
@@ -382,6 +436,7 @@
     <div class="legend-item"><div class="dot dot-primary"></div> Primary — must attend</div>
     <div class="legend-item"><div class="dot dot-backup"></div> Backup — strong interest</div>
     <div class="legend-item"><div class="dot dot-other"></div> Other</div>
+    <button id="reset-btn" class="reset-btn" onclick="resetOverrides()" style="display:none">Reset edits</button>
   </div>
 </header>
 
@@ -406,33 +461,45 @@
 
 <script>
 const SESSIONS_URL = 'sessions.json';
-
-const INTEREST_REASONS = {
-  primary: [
-    "Directly matches your focus on agent runtimes, harness engineering, inference infrastructure, or context engineering.",
-    "Covers production-grade techniques for autonomous agent systems with novel architectural insights.",
-    "Addresses evaluation, memory, or tool integration — core to reliable agent engineering.",
-  ],
-  backup: [
-    "Touches adjacent areas relevant to your interests — worth attending if your primary pick is full or conflicts.",
-    "Contains engineering substance but is more broadly scoped than your primary interests.",
-  ],
-};
+const STORAGE_KEY = 'aie-overrides';
 
 let allDays = {};
 let currentDay = null;
 let currentFilter = 'all';
+// overrides: { "Day|Title": "primary"|"backup"|"other" }
+let overrides = {};
+
+function loadOverrides() {
+  try { overrides = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { overrides = {}; }
+}
+function saveOverrides() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
+  document.getElementById('reset-btn').style.display = Object.keys(overrides).length ? '' : 'none';
+}
+function overrideKey(day, title) { return `${day}|${title}`; }
+
+function effectiveInterest(s, day) {
+  const k = overrideKey(day, s.title);
+  return overrides[k] !== undefined ? overrides[k] : s.interest;
+}
+
+function resetOverrides() {
+  if (!confirm('Reset all manual edits and restore auto-scored picks?')) return;
+  overrides = {};
+  saveOverrides();
+  render();
+}
 
 async function load() {
   const res = await fetch(SESSIONS_URL);
   allDays = await res.json();
+  loadOverrides();
   render();
 }
 
 function render() {
   const days = Object.keys(allDays);
 
-  // Render tabs
   const tabsEl = document.getElementById('tabs');
   tabsEl.innerHTML = days.map((d, i) =>
     `<button class="tab${i === 0 ? ' active' : ''}" onclick="switchDay('${d}')">${d}</button>`
@@ -440,63 +507,61 @@ function render() {
 
   currentDay = days[0];
 
-  // Render all day views
   const main = document.getElementById('main');
   main.innerHTML = days.map(day =>
     `<div class="day-view${day === currentDay ? ' active' : ''}" id="day-${CSS.escape(day)}">
-      ${renderDay(allDays[day])}
+      ${renderDay(allDays[day], day)}
     </div>`
   ).join('');
 
+  document.getElementById('reset-btn').style.display = Object.keys(overrides).length ? '' : 'none';
   updateStats();
 }
 
-function renderDay(sessions) {
-  // Group by time slot
+function renderDay(sessions, day) {
   const byTime = {};
   for (const s of sessions) {
     if (!byTime[s.time]) byTime[s.time] = [];
     byTime[s.time].push(s);
   }
 
-  // Detect conflicts: time slots where multiple primaries exist
+  // Detect conflicts using effective interest
   const conflictTimes = new Set(
     Object.entries(byTime)
-      .filter(([, ss]) => ss.filter(s => s.interest === 'primary').length > 1)
+      .filter(([, ss]) => ss.filter(s => effectiveInterest(s, day) === 'primary').length > 1)
       .map(([t]) => t)
   );
 
   return Object.entries(byTime)
     .sort(([a], [b]) => sortTime(a) - sortTime(b))
-    .map(([time, sessions]) => {
-      const hasPrimary = sessions.some(s => s.interest === 'primary');
+    .map(([time, slots]) => {
       const isConflict = conflictTimes.has(time);
-
-      const cards = sessions
+      const cards = slots
         .sort((a, b) => b.score - a.score)
-        .map(s => renderCard(s, isConflict && s.interest === 'primary'))
+        .map(s => renderCard(s, day, isConflict && effectiveInterest(s, day) === 'primary'))
         .join('');
-
       return `
-        <div class="timeslot" data-time="${time}" data-has-primary="${hasPrimary}">
+        <div class="timeslot" data-time="${time}">
           <div class="time-label">${time}${isConflict ? ' ⚠ conflict — multiple primary sessions' : ''}</div>
           <div class="session-grid">${cards}</div>
         </div>`;
     }).join('');
 }
 
-function renderCard(s, conflict) {
-  const idx = encodeURIComponent(JSON.stringify({day: currentDay, title: s.title}));
+function renderCard(s, day, conflict) {
+  const interest = effectiveInterest(s, day);
+  const isEdited = overrides[overrideKey(day, s.title)] !== undefined;
   const conflictBadge = conflict ? `<span class="conflict-flag">conflict</span>` : '';
-  const badge = s.interest === 'primary'
-    ? `<span class="badge badge-primary" title="Primary pick">★ PRIMARY</span>`
-    : s.interest === 'backup'
-      ? `<span class="badge badge-backup" title="Backup pick">◎ BACKUP</span>`
+  const editedDot = isEdited ? `<span class="edited-dot" title="Manually edited"></span>` : '';
+  const badge = interest === 'primary'
+    ? `<span class="badge badge-primary">★ PRIMARY</span>`
+    : interest === 'backup'
+      ? `<span class="badge badge-backup">◎ BACKUP</span>`
       : '';
 
   return `
-    <div class="card ${s.interest}" data-interest="${s.interest}" onclick="openModal('${escapeAttr(s.title)}', '${currentDay}')">
-      <div class="card-top">${conflictBadge}${badge}</div>
+    <div class="card ${interest}" data-interest="${interest}" onclick="openModal('${escapeAttr(s.title)}', '${escapeAttr(day)}')">
+      <div class="card-top">${conflictBadge}${badge}${editedDot}</div>
       <div class="card-title">${escapeHtml(s.title)}</div>
       <div class="card-meta">
         <span>🕐 ${escapeHtml(s.time)}</span>
@@ -512,18 +577,18 @@ function openModal(title, day) {
   const s = sessions.find(x => x.title === title);
   if (!s) return;
 
-  const badgeClass = s.interest === 'primary' ? 'modal-badge-primary'
-    : s.interest === 'backup' ? 'modal-badge-backup' : 'modal-badge-other';
-  const badgeLabel = s.interest === 'primary' ? 'PRIMARY PICK'
-    : s.interest === 'backup' ? 'BACKUP PICK' : 'OTHER';
-
-  const reasonPool = INTEREST_REASONS[s.interest];
-  const reason = reasonPool
-    ? reasonPool[Math.abs(hashCode(title)) % reasonPool.length]
-    : null;
+  const interest = effectiveInterest(s, day);
+  const badgeClass = interest === 'primary' ? 'modal-badge-primary'
+    : interest === 'backup' ? 'modal-badge-backup' : 'modal-badge-other';
+  const badgeLabel = interest === 'primary' ? 'PRIMARY PICK'
+    : interest === 'backup' ? 'BACKUP PICK' : 'OTHER';
+  const isEdited = overrides[overrideKey(day, title)] !== undefined;
 
   document.getElementById('modal-content').innerHTML = `
-    <div class="modal-badge ${badgeClass}">${badgeLabel}</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div class="modal-badge ${badgeClass}">${badgeLabel}</div>
+      ${isEdited ? '<span style="font-size:11px;color:#a855f7">✎ manually set</span>' : ''}
+    </div>
     <h2>${escapeHtml(s.title)}</h2>
     <div class="modal-meta">
       <div class="modal-meta-item">
@@ -545,9 +610,36 @@ function openModal(title, day) {
     </div>
     ${s.speakers ? `<div class="modal-speakers">🎙 ${escapeHtml(s.speakers)}</div>` : ''}
     ${s.description ? `<div class="modal-desc">${escapeHtml(s.description)}</div>` : ''}
-    ${reason ? `<div class="modal-reason"><strong>Why this session?</strong> ${reason}</div>` : ''}
+    <div class="modal-override">
+      <span class="modal-override-label">Mark as:</span>
+      <button class="override-btn ${interest === 'primary' ? 'active-primary' : ''}" onclick="setOverride('${escapeAttr(title)}','${escapeAttr(day)}','primary')">★ Primary</button>
+      <button class="override-btn ${interest === 'backup'  ? 'active-backup'  : ''}" onclick="setOverride('${escapeAttr(title)}','${escapeAttr(day)}','backup')">◎ Backup</button>
+      <button class="override-btn ${interest === 'other'   ? 'active-other'   : ''}" onclick="setOverride('${escapeAttr(title)}','${escapeAttr(day)}','other')">✕ Other</button>
+      ${isEdited ? `<button class="override-btn" onclick="clearOverride('${escapeAttr(title)}','${escapeAttr(day)}')" style="margin-left:auto;color:#a855f7;border-color:#a855f7">↩ Reset to auto</button>` : ''}
+    </div>
   `;
   document.getElementById('overlay').classList.add('open');
+}
+
+function setOverride(title, day, interest) {
+  overrides[overrideKey(day, title)] = interest;
+  saveOverrides();
+  // Re-render the day and reopen modal with updated state
+  const dayEl = document.getElementById(`day-${CSS.escape(day)}`);
+  if (dayEl) dayEl.innerHTML = renderDay(allDays[day], day);
+  applyFilter();
+  updateStats();
+  openModal(title, day);
+}
+
+function clearOverride(title, day) {
+  delete overrides[overrideKey(day, title)];
+  saveOverrides();
+  const dayEl = document.getElementById(`day-${CSS.escape(day)}`);
+  if (dayEl) dayEl.innerHTML = renderDay(allDays[day], day);
+  applyFilter();
+  updateStats();
+  openModal(title, day);
 }
 
 function closeModal(e) {
@@ -591,7 +683,6 @@ function applyFilter() {
     card.classList.toggle('hidden', !show);
   });
 
-  // Hide empty timeslots
   document.querySelectorAll('.day-view.active .timeslot').forEach(ts => {
     const visible = [...ts.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
     ts.style.display = visible ? '' : 'none';
@@ -600,9 +691,11 @@ function applyFilter() {
 
 function updateStats() {
   const sessions = allDays[currentDay] || [];
-  const p = sessions.filter(s => s.interest === 'primary').length;
-  const b = sessions.filter(s => s.interest === 'backup').length;
-  document.getElementById('stats').textContent = `${p} primary · ${b} backup this day`;
+  const p = sessions.filter(s => effectiveInterest(s, currentDay) === 'primary').length;
+  const b = sessions.filter(s => effectiveInterest(s, currentDay) === 'backup').length;
+  const edits = Object.keys(overrides).filter(k => k.startsWith(currentDay + '|')).length;
+  document.getElementById('stats').textContent =
+    `${p} primary · ${b} backup this day${edits ? ` · ${edits} edited` : ''}`;
 }
 
 function sortTime(t) {
