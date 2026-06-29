@@ -6,19 +6,19 @@
 <title>AIE 2025 — My Schedule</title>
 <style>
   :root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --surface2: #22263a;
-    --border: #2e3350;
-    --text: #e2e6f3;
-    --muted: #7a82a8;
-    --primary: #6c8fff;
-    --primary-bg: #1a2240;
-    --primary-border: #3a5299;
-    --backup: #ffa94d;
-    --backup-bg: #241a0a;
-    --backup-border: #7a4e10;
-    --other: #3a3f5c;
+    --bg: #f4f6fb;
+    --surface: #ffffff;
+    --surface2: #eef0f8;
+    --border: #d8dcea;
+    --text: #1a1d2e;
+    --muted: #636a8a;
+    --primary: #3b5bdb;
+    --primary-bg: #eef2ff;
+    --primary-border: #bac8ff;
+    --backup: #d97706;
+    --backup-bg: #fffbeb;
+    --backup-border: #fcd34d;
+    --other: #cbd0e8;
     --pill-r: 999px;
     --radius: 10px;
   }
@@ -155,7 +155,6 @@
     padding: 14px 16px;
     cursor: pointer;
     transition: border-color 0.15s, transform 0.1s;
-    position: relative;
   }
   .card:hover { transform: translateY(-1px); }
   .card.primary {
@@ -171,21 +170,22 @@
   .card.other { opacity: 0.6; }
   .card.hidden { display: none; }
 
-  .card-header {
+  .card-top {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 8px;
+    align-items: center;
+    gap: 6px;
     margin-bottom: 6px;
+    flex-wrap: wrap;
+    min-height: 20px;
   }
   .card-title {
     font-size: 13px;
     font-weight: 600;
     line-height: 1.4;
-    flex: 1;
+    margin-bottom: 6px;
   }
-  .card.primary .card-title { color: #a8bdff; }
-  .card.backup .card-title { color: #ffc980; }
+  .card.primary .card-title { color: #2d44b0; }
+  .card.backup .card-title { color: #92400e; }
 
   .badge {
     padding: 2px 8px;
@@ -220,15 +220,14 @@
   }
 
   .conflict-flag {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    display: inline-block;
     font-size: 10px;
     padding: 2px 6px;
     border-radius: var(--pill-r);
-    background: #ff4d4f22;
-    border: 1px solid #ff4d4f55;
-    color: #ff7875;
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+    color: #b91c1c;
+    margin-bottom: 6px;
   }
 
   /* Modal */
@@ -236,11 +235,11 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: #00000088;
+    background: rgba(0,0,0,0.4);
     z-index: 100;
     align-items: center;
     justify-content: center;
-    padding: 24px;
+    padding: 16px;
   }
   .overlay.open { display: flex; }
 
@@ -250,15 +249,15 @@
     border-radius: 14px;
     max-width: 680px;
     width: 100%;
-    max-height: 85vh;
+    max-height: 90vh;
     overflow-y: auto;
-    padding: 28px 32px;
+    padding: 24px 24px 28px;
     position: relative;
   }
   .modal-close {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 14px;
+    right: 14px;
     background: var(--surface2);
     border: 1px solid var(--border);
     color: var(--muted);
@@ -272,7 +271,7 @@
     justify-content: center;
     line-height: 1;
   }
-  .modal-close:hover { color: var(--text); }
+  .modal-close:hover { color: var(--text); background: var(--border); }
 
   .modal-badge {
     display: inline-block;
@@ -280,24 +279,25 @@
     border-radius: var(--pill-r);
     font-size: 11px;
     font-weight: 700;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .modal-badge-primary { background: var(--primary); color: #fff; }
-  .modal-badge-backup { background: var(--backup); color: #1a0f00; }
+  .modal-badge-backup { background: var(--backup); color: #fff; }
   .modal-badge-other { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
 
   .modal h2 {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     line-height: 1.35;
     margin-bottom: 14px;
+    padding-right: 28px;
   }
   .modal-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 18px;
-    padding-bottom: 18px;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
     border-bottom: 1px solid var(--border);
   }
   .modal-meta-item {
@@ -311,19 +311,19 @@
   .modal-speakers {
     font-size: 13px;
     color: var(--muted);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
   .modal-desc {
     font-size: 13px;
     line-height: 1.7;
-    color: #b8c0d8;
+    color: #374060;
     white-space: pre-wrap;
   }
 
   .modal-reason {
-    margin-top: 18px;
+    margin-top: 16px;
     padding: 12px 14px;
-    background: var(--surface2);
+    background: var(--primary-bg);
     border-radius: 8px;
     border-left: 3px solid var(--primary);
     font-size: 12px;
@@ -332,6 +332,43 @@
   .modal-reason strong { color: var(--text); }
 
   .empty { padding: 40px; text-align: center; color: var(--muted); font-size: 14px; }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    header {
+      padding: 14px 16px 12px;
+      gap: 6px;
+    }
+    header h1 { font-size: 17px; }
+    .legend { display: none; }
+
+    .controls {
+      padding: 8px 12px;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .tabs { gap: 3px; flex-wrap: wrap; }
+    .tab { padding: 5px 10px; font-size: 12px; }
+
+    .filter-group { margin-left: 0; flex-wrap: wrap; }
+    .filter-btn { padding: 4px 9px; font-size: 11px; }
+
+    .stats { width: 100%; margin-left: 0; }
+
+    main { padding: 12px 10px; }
+
+    .session-grid { grid-template-columns: 1fr; }
+
+    .conflict-flag { font-size: 9px; padding: 2px 5px; }
+
+    .modal {
+      padding: 18px 16px 24px;
+      border-radius: 12px;
+      max-height: 92vh;
+    }
+    .modal h2 { font-size: 15px; }
+    .modal-meta { gap: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -452,18 +489,15 @@ function renderCard(s, conflict) {
   const idx = encodeURIComponent(JSON.stringify({day: currentDay, title: s.title}));
   const conflictBadge = conflict ? `<span class="conflict-flag">conflict</span>` : '';
   const badge = s.interest === 'primary'
-    ? `<span class="badge badge-primary">PRIMARY</span>`
+    ? `<span class="badge badge-primary" title="Primary pick">★ PRIMARY</span>`
     : s.interest === 'backup'
-      ? `<span class="badge badge-backup">BACKUP</span>`
+      ? `<span class="badge badge-backup" title="Backup pick">◎ BACKUP</span>`
       : '';
 
   return `
     <div class="card ${s.interest}" data-interest="${s.interest}" onclick="openModal('${escapeAttr(s.title)}', '${currentDay}')">
-      ${conflictBadge}
-      <div class="card-header">
-        <div class="card-title">${escapeHtml(s.title)}</div>
-        ${badge}
-      </div>
+      <div class="card-top">${conflictBadge}${badge}</div>
+      <div class="card-title">${escapeHtml(s.title)}</div>
       <div class="card-meta">
         <span>🕐 ${escapeHtml(s.time)}</span>
         <span>📍 ${escapeHtml(s.room)}</span>
