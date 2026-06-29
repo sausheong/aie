@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+preview.png
+modal-preview.png
+modal-final.png
+.playwright-mcp/

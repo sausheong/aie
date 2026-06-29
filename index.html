@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIE 2025 — My Schedule</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --border: #2e3350;
+    --text: #e2e6f3;
+    --muted: #7a82a8;
+    --primary: #6c8fff;
+    --primary-bg: #1a2240;
+    --primary-border: #3a5299;
+    --backup: #ffa94d;
+    --backup-bg: #241a0a;
+    --backup-border: #7a4e10;
+    --other: #3a3f5c;
+    --pill-r: 999px;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  header {
+    padding: 24px 32px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  header h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+  header .subtitle { color: var(--muted); font-size: 13px; }
+
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-left: auto;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+  .dot-primary { background: var(--primary); }
+  .dot-backup { background: var(--backup); }
+  .dot-other { background: var(--other); }
+
+  .controls {
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+  }
+  .tab {
+    padding: 6px 14px;
+    border-radius: var(--pill-r);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .tab:hover { border-color: var(--primary); color: var(--text); }
+  .tab.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+  .filter-group {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+  }
+  .filter-btn {
+    padding: 5px 12px;
+    border-radius: var(--pill-r);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { color: var(--text); }
+  .filter-btn.active-primary { border-color: var(--primary); color: var(--primary); background: var(--primary-bg); }
+  .filter-btn.active-backup { border-color: var(--backup); color: var(--backup); background: var(--backup-bg); }
+  .filter-btn.active-all { border-color: var(--border); color: var(--text); background: var(--surface); }
+
+  .stats {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: 8px;
+  }
+
+  main {
+    padding: 24px 32px;
+    max-width: 1400px;
+  }
+
+  .day-view { display: none; }
+  .day-view.active { display: block; }
+
+  .timeslot {
+    margin-bottom: 28px;
+  }
+  .time-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .session-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.1s;
+    position: relative;
+  }
+  .card:hover { transform: translateY(-1px); }
+  .card.primary {
+    border-color: var(--primary-border);
+    background: var(--primary-bg);
+  }
+  .card.primary:hover { border-color: var(--primary); }
+  .card.backup {
+    border-color: var(--backup-border);
+    background: var(--backup-bg);
+  }
+  .card.backup:hover { border-color: var(--backup); }
+  .card.other { opacity: 0.6; }
+  .card.hidden { display: none; }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    flex: 1;
+  }
+  .card.primary .card-title { color: #a8bdff; }
+  .card.backup .card-title { color: #ffc980; }
+
+  .badge {
+    padding: 2px 8px;
+    border-radius: var(--pill-r);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-primary { background: var(--primary); color: #fff; }
+  .badge-backup { background: var(--backup); color: #1a0f00; }
+
+  .card-meta {
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .card-meta span { display: flex; align-items: center; gap: 3px; }
+
+  .card-speakers {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .conflict-flag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: var(--pill-r);
+    background: #ff4d4f22;
+    border: 1px solid #ff4d4f55;
+    color: #ff7875;
+  }
+
+  /* Modal */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #00000088;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .overlay.open { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    max-width: 680px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 28px 32px;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--text); }
+
+  .modal-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: var(--pill-r);
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .modal-badge-primary { background: var(--primary); color: #fff; }
+  .modal-badge-backup { background: var(--backup); color: #1a0f00; }
+  .modal-badge-other { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+
+  .modal h2 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .modal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .modal-meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+  .modal-meta-value { font-size: 13px; font-weight: 500; }
+
+  .modal-speakers {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .modal-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #b8c0d8;
+    white-space: pre-wrap;
+  }
+
+  .modal-reason {
+    margin-top: 18px;
+    padding: 12px 14px;
+    background: var(--surface2);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .modal-reason strong { color: var(--text); }
+
+  .empty { padding: 40px; text-align: center; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>AIE 2025 — My Schedule</h1>
+    <div class="subtitle">29 Jun – 2 Jul · 553 sessions scored by interest</div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="dot dot-primary"></div> Primary — must attend</div>
+    <div class="legend-item"><div class="dot dot-backup"></div> Backup — strong interest</div>
+    <div class="legend-item"><div class="dot dot-other"></div> Other</div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="tabs" id="tabs"></div>
+  <div class="filter-group">
+    <button class="filter-btn active-all" data-filter="all" onclick="setFilter('all')">All</button>
+    <button class="filter-btn" data-filter="primary" onclick="setFilter('primary')">Primary only</button>
+    <button class="filter-btn" data-filter="backup" onclick="setFilter('backup')">Primary + Backup</button>
+  </div>
+  <span class="stats" id="stats"></span>
+</div>
+
+<main id="main"></main>
+
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalDirect()">×</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+const SESSIONS_URL = 'sessions.json';
+
+const INTEREST_REASONS = {
+  primary: [
+    "Directly matches your focus on agent runtimes, harness engineering, inference infrastructure, or context engineering.",
+    "Covers production-grade techniques for autonomous agent systems with novel architectural insights.",
+    "Addresses evaluation, memory, or tool integration — core to reliable agent engineering.",
+  ],
+  backup: [
+    "Touches adjacent areas relevant to your interests — worth attending if your primary pick is full or conflicts.",
+    "Contains engineering substance but is more broadly scoped than your primary interests.",
+  ],
+};
+
+let allDays = {};
+let currentDay = null;
+let currentFilter = 'all';
+
+async function load() {
+  const res = await fetch(SESSIONS_URL);
+  allDays = await res.json();
+  render();
+}
+
+function render() {
+  const days = Object.keys(allDays);
+
+  // Render tabs
+  const tabsEl = document.getElementById('tabs');
+  tabsEl.innerHTML = days.map((d, i) =>
+    `<button class="tab${i === 0 ? ' active' : ''}" onclick="switchDay('${d}')">${d}</button>`
+  ).join('');
+
+  currentDay = days[0];
+
+  // Render all day views
+  const main = document.getElementById('main');
+  main.innerHTML = days.map(day =>
+    `<div class="day-view${day === currentDay ? ' active' : ''}" id="day-${CSS.escape(day)}">
+      ${renderDay(allDays[day])}
+    </div>`
+  ).join('');
+
+  updateStats();
+}
+
+function renderDay(sessions) {
+  // Group by time slot
+  const byTime = {};
+  for (const s of sessions) {
+    if (!byTime[s.time]) byTime[s.time] = [];
+    byTime[s.time].push(s);
+  }
+
+  // Detect conflicts: time slots where multiple primaries exist
+  const conflictTimes = new Set(
+    Object.entries(byTime)
+      .filter(([, ss]) => ss.filter(s => s.interest === 'primary').length > 1)
+      .map(([t]) => t)
+  );
+
+  return Object.entries(byTime)
+    .sort(([a], [b]) => sortTime(a) - sortTime(b))
+    .map(([time, sessions]) => {
+      const hasPrimary = sessions.some(s => s.interest === 'primary');
+      const isConflict = conflictTimes.has(time);
+
+      const cards = sessions
+        .sort((a, b) => b.score - a.score)
+        .map(s => renderCard(s, isConflict && s.interest === 'primary'))
+        .join('');
+
+      return `
+        <div class="timeslot" data-time="${time}" data-has-primary="${hasPrimary}">
+          <div class="time-label">${time}${isConflict ? ' ⚠ conflict — multiple primary sessions' : ''}</div>
+          <div class="session-grid">${cards}</div>
+        </div>`;
+    }).join('');
+}
+
+function renderCard(s, conflict) {
+  const idx = encodeURIComponent(JSON.stringify({day: currentDay, title: s.title}));
+  const conflictBadge = conflict ? `<span class="conflict-flag">conflict</span>` : '';
+  const badge = s.interest === 'primary'
+    ? `<span class="badge badge-primary">PRIMARY</span>`
+    : s.interest === 'backup'
+      ? `<span class="badge badge-backup">BACKUP</span>`
+      : '';
+
+  return `
+    <div class="card ${s.interest}" data-interest="${s.interest}" onclick="openModal('${escapeAttr(s.title)}', '${currentDay}')">
+      ${conflictBadge}
+      <div class="card-header">
+        <div class="card-title">${escapeHtml(s.title)}</div>
+        ${badge}
+      </div>
+      <div class="card-meta">
+        <span>🕐 ${escapeHtml(s.time)}</span>
+        <span>📍 ${escapeHtml(s.room)}</span>
+        ${s.type ? `<span>🏷 ${escapeHtml(s.type)}</span>` : ''}
+      </div>
+      ${s.speakers ? `<div class="card-speakers">${escapeHtml(truncate(s.speakers, 70))}</div>` : ''}
+    </div>`;
+}
+
+function openModal(title, day) {
+  const sessions = allDays[day];
+  const s = sessions.find(x => x.title === title);
+  if (!s) return;
+
+  const badgeClass = s.interest === 'primary' ? 'modal-badge-primary'
+    : s.interest === 'backup' ? 'modal-badge-backup' : 'modal-badge-other';
+  const badgeLabel = s.interest === 'primary' ? 'PRIMARY PICK'
+    : s.interest === 'backup' ? 'BACKUP PICK' : 'OTHER';
+
+  const reasonPool = INTEREST_REASONS[s.interest];
+  const reason = reasonPool
+    ? reasonPool[Math.abs(hashCode(title)) % reasonPool.length]
+    : null;
+
+  document.getElementById('modal-content').innerHTML = `
+    <div class="modal-badge ${badgeClass}">${badgeLabel}</div>
+    <h2>${escapeHtml(s.title)}</h2>
+    <div class="modal-meta">
+      <div class="modal-meta-item">
+        <div class="modal-meta-label">Time</div>
+        <div class="modal-meta-value">${escapeHtml(s.time)}</div>
+      </div>
+      <div class="modal-meta-item">
+        <div class="modal-meta-label">Room</div>
+        <div class="modal-meta-value">${escapeHtml(s.room)}</div>
+      </div>
+      ${s.type ? `<div class="modal-meta-item">
+        <div class="modal-meta-label">Type</div>
+        <div class="modal-meta-value">${escapeHtml(s.type)}</div>
+      </div>` : ''}
+      ${s.track ? `<div class="modal-meta-item">
+        <div class="modal-meta-label">Track</div>
+        <div class="modal-meta-value">${escapeHtml(s.track)}</div>
+      </div>` : ''}
+    </div>
+    ${s.speakers ? `<div class="modal-speakers">🎙 ${escapeHtml(s.speakers)}</div>` : ''}
+    ${s.description ? `<div class="modal-desc">${escapeHtml(s.description)}</div>` : ''}
+    ${reason ? `<div class="modal-reason"><strong>Why this session?</strong> ${reason}</div>` : ''}
+  `;
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('overlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('overlay').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+
+function switchDay(day) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.textContent === day));
+  document.querySelectorAll('.day-view').forEach(d => d.classList.remove('active'));
+  const el = document.getElementById(`day-${CSS.escape(day)}`);
+  if (el) el.classList.add('active');
+  currentDay = day;
+  applyFilter();
+  updateStats();
+}
+
+function setFilter(filter) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.className = 'filter-btn';
+    if (b.dataset.filter === filter) {
+      if (filter === 'primary') b.classList.add('active-primary');
+      else if (filter === 'backup') b.classList.add('active-backup');
+      else b.classList.add('active-all');
+    }
+  });
+  applyFilter();
+  updateStats();
+}
+
+function applyFilter() {
+  document.querySelectorAll('.card').forEach(card => {
+    const interest = card.dataset.interest;
+    let show = true;
+    if (currentFilter === 'primary') show = interest === 'primary';
+    else if (currentFilter === 'backup') show = interest === 'primary' || interest === 'backup';
+    card.classList.toggle('hidden', !show);
+  });
+
+  // Hide empty timeslots
+  document.querySelectorAll('.day-view.active .timeslot').forEach(ts => {
+    const visible = [...ts.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
+    ts.style.display = visible ? '' : 'none';
+  });
+}
+
+function updateStats() {
+  const sessions = allDays[currentDay] || [];
+  const p = sessions.filter(s => s.interest === 'primary').length;
+  const b = sessions.filter(s => s.interest === 'backup').length;
+  document.getElementById('stats').textContent = `${p} primary · ${b} backup this day`;
+}
+
+function sortTime(t) {
+  if (!t) return 9999;
+  const m = t.match(/(\d+):(\d+)(am|pm)/i);
+  if (!m) return 9999;
+  let h = parseInt(m[1]);
+  const min = parseInt(m[2]);
+  if (m[3].toLowerCase() === 'pm' && h !== 12) h += 12;
+  if (m[3].toLowerCase() === 'am' && h === 12) h = 0;
+  return h * 60 + min;
+}
+
+function truncate(s, n) { return s.length > n ? s.slice(0, n) + '…' : s; }
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escapeAttr(s) { return String(s).replace(/'/g, "\\'").replace(/\\/g, '\\\\'); }
+function hashCode(s) { let h=0; for(let i=0;i<s.length;i++){h=Math.imul(31,h)+s.charCodeAt(i)|0;} return h; }
+
+load();
+</script>
+</body>
+</html>
