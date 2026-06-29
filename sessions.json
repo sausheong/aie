@@ -9,7 +9,7 @@
       "speakers": "Laurie Voss (Head of Developer Relations, Arize AI)",
       "description": "Building an AI demo is easy. Knowing whether it actually works \u2014 and keeping it working in production \u2014 is the hard part. Most teams ship agents on vibes: they try a few prompts, the output looks good, and they push to production with no real way to measure quality or catch regressions.\n This hands-on workshop walks through the full lifecycle of shipping a real AI agent, using a working financial-analyst agent built on the Claude Agent SDK as the running example. You'll instrument it with tracing, do structured error analysis on its actual outputs, and build a layered evaluation suite \u2014 from cheap deterministic code checks to LLM-as-a-judge evaluators with custom rubrics. We'll cover the parts most tutorials skip: why agents fail in ways single LLM calls don't, the eval anti-patterns that quietly mislead you, and how to know whether you can even trust your judge (meta-evaluation). Finally, we'll close the loop: turning eval results into datasets and experiments, running evals online against production traffic, wiring them to monitors and alerts, and feeding failure explanations back to a coding agent to actually fix the underlying problems.\n You'll leave with a runnable notebook and a repeatable, evaluation-driven workflow you can apply to your own agents the next day.",
       "score": 8,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "AI on Your Lakehouse: Context Comes in Shapes, Not Queries",
@@ -108,7 +108,7 @@
       "speakers": "Pamela Fox (Principal Cloud Advocate, Microsoft)",
       "description": "In this hands-on lab, you will build a production-ready AI application using Microsoft Foundry, with no fine-tuning or deep machine learning expertise required. You will discover and select models, provision a Foundry project, and connect to a hosted model using the OpenAI SDK. You\u2019ll implement a comment moderation workflow, compare model outputs, and package the solution as a hosted agent using Python, ready for real-world integration.",
       "score": 0,
-      "interest": "skip"
+      "interest": "primary"
     },
     {
       "title": "How to use Arize\u2019s newest features",
@@ -394,7 +394,7 @@
       "speakers": "Filip Makraduli (Founding Member of Technical Staff, Superlinked)",
       "description": "Personal knowledge bases are messy, but engineering agents need memory: decisions, docs, TODOs, old PRs, architecture notes, incident notes. This talk shows how I made an Obsidian vault usable by an agent using local-first retrieval and small-model inference. The point is not \u201cchat with notes\u201d; it is how to build durable, inspectable agent memory.",
       "score": 8,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "Continuously improving agents with Langfuse",
@@ -438,7 +438,7 @@
       "speakers": "Daniel Han (Unsloth)",
       "description": "an advanced seminar (required prerequisites: Daniel's 2024 and 2025 hit AIE workshops)",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Burn your flags: How PayPal designs interactive CLI tools for agents",
@@ -515,7 +515,7 @@
       "speakers": "Pamela Fox (Principal Cloud Advocate, Microsoft)",
       "description": "Modern agents fail in ways traditional monitoring can\u2019t catch. In this hands-on lab, learn how Microsoft Foundry Observability helps you move from prototype \u2192 production with context-specific evaluation suites (auto-generated evaluators + test datasets) wired into developer workflows via skills/MCP tooling for hosted agents. Then scale quality with continuous evaluation, trace-linked analysis, and adaptive red teaming\u2014and walk away with a sandbox to explore additional features on your own.",
       "score": 13,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Reliable Computer Use Agents require coding",
@@ -526,7 +526,7 @@
       "speakers": "Ang Li (CEO, Simular)",
       "description": "Even the world's best computer-use agents cannot repeat their successes at the moment. Agents that write code \u2014 emitting structured selector-based actions instead of clicking pixels \u2014 break through that ceiling. We'll share two years of experience from Simular's production agent platform, the architectural decisions that mattered (refs over pixels, code as substrate, Simulang DSL), and a live demo: a 30-step unattended Windows workflow, side-by-side with a vision-only baseline. If you're shipping agents to real users, this is the playbook.",
       "score": 9,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "The Dark Arts of Skill Engineering",
@@ -614,7 +614,7 @@
       "speakers": "Joyce Zhang (Dating Coach for Tech Founders); Carole Robin, Ph.D. (Co-Founder, Leaders in Tech)",
       "description": "Building AI safely requires both technical skills and interpersonal skills. A live demo of connection tools from Stanford's \"Touchy Feely\" course, then hands-on practice. Co-hosted with Leaders in Tech.",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Expo Welcome Speech",
@@ -625,7 +625,7 @@
       "speakers": "Sonar; Extend AI",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Runway AI Film Festival",
@@ -636,7 +636,7 @@
       "speakers": "TBA",
       "description": "Runway's annual AI Festival \u2014 a celebration of creatives experimenting at the forefront of art and technology across film, design, new media, fashion, advertising, and gaming, with a screening of finalist AI films. https://aif.runwayml.com/",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     }
   ],
   "TUE 30 Jun": [
@@ -649,7 +649,7 @@
       "speakers": "swyx (Curator, Latent Space / AI Engineer)",
       "description": "We celebrate the third birthday of the AI Engineer post.",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "On AI and Knowledge",
@@ -660,7 +660,7 @@
       "speakers": "Pablo Castro (Distinguished Engineer and CVP, Microsoft)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Opening Keynote: Topic TBD",
@@ -671,7 +671,7 @@
       "speakers": "Alexander Embiricos (Head of Enterprise Product, OpenAI); Romain Huet (Head of Developer Experience, OpenAI)",
       "description": "TBD",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Thom Wolf keynote",
@@ -682,7 +682,7 @@
       "speakers": "Thom Wolf (CTO, Hugging Face)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "GLM-5.2: Frontier Intelligence, Open Weights.",
@@ -693,7 +693,7 @@
       "speakers": "Zixuan Li (Head of Z.ai, Z.ai)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Security Track intro",
@@ -704,7 +704,7 @@
       "speakers": "swyx (Curator, Latent Space / AI Engineer)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Every AI company is accidentally building a bank.",
@@ -814,7 +814,7 @@
       "speakers": "Edo Liberty (Founder and Chief Scientist, Pinecone)",
       "description": "Autonomous agents are smart but don\u2019t know your business or your objectives. That\u2019s why most agents in the enterprise remain stuck in retrieval loops, burning millions of tokens on processing raw documents\n\nA shift from traditional retrieval systems + agents (aka RAG) to purpose-built knowledge engines is underway.\n\nI'll talk about why moving reasoning upstream and compiling raw enterprise data into specialized, task-specific context artifacts is critical to unlocking reliable agentic workflows. And I'll show you how offloading knowledge management to a dedicated layer enables engineering teams to achieve up to a 90% reduction in token consumption while drastically improving task completion rates, speed, and accuracy.",
       "score": 13,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Claude Managed Agents Workshop (Part 1)",
@@ -891,7 +891,7 @@
       "speakers": "Martin Harrysson (Senior Partner, McKinsey & Company); Matt Linderman (Partner, Technology Practice, McKinsey & Company); Prakhar Dixit (Partner, McKinsey)",
       "description": "*Facilitated, peer-to-peer, under the Chatham House Rule \u2014 not recorded.*\n\nThe product development lifecycle is being redesigned around reusable skills that accelerate work across both technical and non-technical workflows. We will share practical examples across ideation, planning, product validation, launch and testing \u2014 and look forward to hearing what you are building.",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Give your coding agents the power of turbogrep!",
@@ -1078,7 +1078,7 @@
       "speakers": "Jess Wang",
       "description": "Evals let you replace gut feelings with quantifiable decisions. This talk breaks the basic concepts of evals, including the four core components: datasets, tasks, scoring, and experiments. Then, to solidify the concept, we\u2019ll walk through a real eval comparing agentic search versus vector search for coding agents. We'll also cover practical challenges like tracing Claude Code subprocess calls and why a single eval run is never enough. You'll leave with a concrete framework for building evals that actually inform your ship decisions.",
       "score": 5,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "Agents Don't Have Coworkers, They Have Hostages",
@@ -1166,7 +1166,7 @@
       "speakers": "Will Bryk (CEO, Exa)",
       "description": "Every search API claiming to be \"built for AI\" is actually Google with a wrapper. That's a problem, because AI agents don't search like humans. A human waits 1 second for a result. An agent making 50 sequential searches at 1 second each creates a 50-second lag. That kills the product. And latency is just one dimension: agents need semantic precision, structured outputs, and a range that spans sub-200ms real-time retrieval all the way to multi-step deep research. No human-facing search engine was ever designed to do that. Will Bryk, CEO of Exa, shares what he learned building a search engine from scratch for AI. He'll cover the architectural decisions behind Exa's latency spectrum, what real usage patterns look like across companies like Cursor, Notion, HubSpot, and Lovable, and why the benchmarks the field relies on today are dangerously inadequate for evaluating agentic search. The bigger argument: search is becoming the most critical primitive in AI infrastructure, and almost no one is building it right.",
       "score": 11,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Claude Managed Agents workshop (Part 3)",
@@ -1331,7 +1331,7 @@
       "speakers": "Aditya Gautam (Machine Learning Lead, Meta)",
       "description": "Short-form video presents a class of content understanding problems that are qualitatively different from text or single-modality media. Audio, visual, and text signals within the same piece of content frequently diverge, sometimes incidentally and sometimes deliberately, creating a modality misalignment that defeats systems designed around any single signal. At the same time, the resharing dynamics of short-form video platforms create originality attribution chains that degrade quickly and are poorly captured by metadata alone. Addressing both problems at platform scale, reliably and under real latency and cost constraints, is the challenge this talk is built around. The core of the talk is the multi-agent architecture developed to address this, published at ACM WSDM 2025, and the reasoning behind its design. Each agent in the system is specialized for a distinct aspect of the problem: understanding what a piece of content is actually communicating across modalities, identifying where those modalities diverge meaningfully, and tracing originality through the resharing graph to surface attribution that platform metadata misses. We will cover the design principles behind this decomposition, the tradeoffs between specialization and complexity, the evaluation framework built to measure performance in a setting where ground truth is genuinely ambiguous, and the practical optimizations that made the system viable at scale. We will also be honest about the limitations: where the multi-agent approach added overhead that simpler baselines handled adequately, and what the boundaries of the system's reliability actually look like in production conditions. The broader takeaway is a set of principles for approaching multimodal content understanding problems where the signals are misaligned by nature rather than by exception. Attendees will leave with a framework for thinking about agent decomposition across a complex multimodal problem, a grounded understanding of how originality attribution degrades at scale and what it takes to recover it, and practical lessons about building evaluation and optimization pipelines for systems where the problem itself resists clean benchmarking.",
       "score": 13,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Rebuilding the web for agents",
@@ -1474,7 +1474,7 @@
       "speakers": "Jean-Denis Greze (Co-Founder & CEO, Town)",
       "description": "MCP v. CLI was about how agents talk to tools. That\u2019s not settled (but we\u2019re camp MCP\u2026 mostly). Almost nothing has settled how agents talk to each other - and that's where the next wave of value (and network effects and virality) lives. At Town we run a personal AI agent in production inside real people's inboxes, calendars, and Slack, and we've built agent-to-agent (A2A) on our platform: 1:1 A2A messaging, agents that carry a short bio of one another, HITL when sensitive data is shared or write actions are involved, and early tests around 1:N A2A. I\u2019ll talk about the why, the opportunity, and the production architecture underneath. Audience takeaway: a concrete mental model for building multi-agent systems on top of the data and surfaces users already live in, plus our learnings on early failure modes to avoid.",
       "score": 5,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "From Ingestion to Agents: How Leading AI Teams Build on Document Intelligence",
@@ -1496,7 +1496,7 @@
       "speakers": "Simon Eskildsen (CEO and co-founder, turbopuffer); Jacob Lauritzen (CTO, Legora)",
       "description": "Legora\u2019s foundational engineering challenge is connecting frontier LLMs to billions of legal documents so the models can efficiently solve end-to-end legal workflows without burning extra tokens. We\u2019ll share the retrieval architecture we built with turbopuffer that achieves: 1. Strict data isolation across millions of legal cases in a very security-conscious domain 2. Predictable search performance (<100ms p90 latency) on large contexts 3. High retrieval quality (95%+ recall@10) with fewer agent loops We\u2019ll retrospect on two architectures that failed to achieve all 3 (and why), and the key design factors that make the current solution work at our scale. Practical takeaways include: - How to evaluate per-tenant vs shared-index retrieval under strict data isolation - How to efficiently index and retrieve context to maximize relevance per input token - How to build a highly intelligent AI application when your inference budget is constrained",
       "score": 13,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Everybody Gets a Digital Clone! (Part 1 of 3)",
@@ -1595,7 +1595,7 @@
       "speakers": "Fuad Ali",
       "description": "Voice agents are one of the fastest-growing and hardest-to-debug categories: the failures live in latency, turn-taking, transcription drift, and tone none of which show up in a text log. We demo Voice traces and Session views, following a real voice session span by span, and Voice evals for scoring what text-only observability can't reach. A short, differentiated session on a problem most of the room is about to hit and few tools address.",
       "score": 11,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Greptile Expo Session",
@@ -1804,7 +1804,7 @@
       "speakers": "Kanish Manuja (Principal Software Engineer, Twilio Inc.)",
       "description": "As organizations scale their use of large language models, the biggest challenge is no longer prompting, it\u2019s productionizing. This session dives deep into building and operating an LLM gateway that sits between applications and model providers, handling routing, observability, cost control, reliability, and safety at scale. Drawing from real world experience, this talk breaks down the architecture of a production LLM gateway, including model abstraction layers, request orchestration, fallback strategies, caching, rate limiting, and evaluation pipelines. We\u2019ll explore hard tradeoffs such as latency vs. cost, quality vs. determinism, and vendor lock-in vs. flexibility. Attendees will leave with concrete design patterns, failure modes to avoid, and a mental model for turning LLM experiments into resilient, scalable systems.",
       "score": 8,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "The Era of Compound Engineering",
@@ -1848,7 +1848,7 @@
       "speakers": "Cody Menefee (Success Engineer, Firecrawl)",
       "description": "Most of the AI world is still thinking too small. We\u2019re building SaaS wrappers and GTM agents while real-world systems are still run through fragmented knowledge, delayed feedback, and human guesswork. In this talk, I\u2019ll show how I\u2019m building an outdoor agentic system for pasture-raised livestock operations using LLMs, a Firecrawl-curated knowledge base, drone and satellite imagery, and geo collars to monitor pasture, guide animal movement, and support better decisions across cattle, sheep, poultry, and more. I\u2019ll cover the architecture, retrieval and grounding, human approval loops, and what broke first: hallucinated confidence, weak environmental grounding, sparse evals, and the gap between a smart answer and a safe action. It\u2019s a case study in building agents for the physical world, and a broader argument that AI\u2019s real upside is in rethinking real-world systems from first principles.",
       "score": 7,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "If we want them to do Knowledge Work, we need to design Knowledge Agents",
@@ -1936,7 +1936,7 @@
       "speakers": "Varun Krovvidi",
       "description": "A model delights us when any plausible answer works, but a production incident has one right answer, and the model alone can't reliably reach it. Getting there depends less on the model and more on the orchestration, context, and judgment built around it. That work is harness engineering, and it is the new frontier.\nThis session breaks down the six pillars of an agentic harness required to fix production incidents: model orchestration, context, reasoning, actions, learning, and evals. Join Resolve AI to walk through what each one does, why a better model doesn't make any of them go away, and how they compose to find the root cause of a live incident across massive context, under a clock, with real revenue on the line.",
       "score": 11,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Video Discovery for Agentic World-Model Training",
@@ -2101,7 +2101,7 @@
       "speakers": "Anders Swanson",
       "description": "Most agents don't really have memory. They have a context window, a pile of temporary files, maybe an AGENTS.md, and a retrieval step that attempts to build state from whatever the model can still see. You've seen the flashy demos, but these systems fall apart when an agent needs to recover from failure, revisit prior work, and observe if failures are less frequent over time. This talk explores agent memory as a systems problem. Effective memory isn't just storing data: it's an evolving knowledge layer with write filtering, consolidation, reflection, and forgetting. Agents need persistence, and they also need structure. Raw logs and Markdown scratchpads aren't enough. A real memory layer weights recency, combines retrieval techniques, and correlates episodic memories. Serious agent memory is inherently multi-model. The best systems use full-text search, semantic retrieval, graph relationships, and structured state to reconstruct context with far more precision than filesystem grep alone. This is where databases become essential as the foundation for real memory. Memory shapes how agents behave, adapt, and improve over time.",
       "score": 11,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Running a 20T-Token Data Pipeline: Infrastructure Lessons from Production",
@@ -2266,7 +2266,7 @@
       "speakers": "Cam Kennedy (Airbyte)",
       "description": "Agents need a reliable way to reach live business data. At Airbyte we built two interfaces for that, and this session is how.\n\nCam built much of that surface. He covers the MCP server that exposes hundreds of sources through one endpoint with managed auth, and the CLI that's designed for agent harnesses rather than humans, with embedded help, packaged agent skills, and no credentials passed over the command line. Expect the real engineering: why a CLI turned out to fit autonomous agents better than the API or SDK, how auth works across the layers, and the tradeoffs the team made along the way.\n\nCome if you're building agent tooling or thinking about how to expose your own systems to agents cleanly.",
       "score": 11,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "From Chatbots to Agents: How Reducto builds for Agent Experience to Enable Real Work",
@@ -2321,7 +2321,7 @@
       "speakers": "Tushar Jain (EVP of Engineering, Docker)",
       "description": "The way software gets built in 2026 doesn't look like it did in 2024. The actors changed. Agents read and write entire codebases. Subagents spawn to chase down a flaky test, refactor a module, or triage an incident. But this shift doesn't stop at the SDLC. Agents increasingly invoke tools, interact with enterprise systems, install dependencies, call APIs, and orchestrate workflows across local machines, CI systems, cloud infrastructure, and organizational boundaries. The teams leaning into this shift are moving faster, and the gap is widening by the quarter.\n \n \n But few have the confidence to let agents operate autonomously across those environments. Not because the model capability isn't there. Trust isn't. Agents can pull a poisoned dependency, invoke an untrusted tool, wipe a database, leak sensitive data, or access systems they shouldn\u2019t. Prompt-level instructions won't close that gap, the unlock has to happen one layer down, at the runtime layer itself.\n \n \n Docker spent the last decade making it safe to ship software by getting the runtime right: isolation, network policy, trusted base images, and credentials. Agents are the next workload, and the same principles apply. Tushar Jain, EVP of Engineering at Docker, walks through what the runtime layer for AI-native systems looks like in practice: hardened runtime foundations, sandboxes that constrain what agents can touch, and governance controls that limit what agents can introduce, access, and execute across local, CI, cloud, and enterprise environments. The pattern is the same on every vector: reduce the surface area of what the agent gets to decide, so the parts that matter aren't left to a prompt.\n \n \n Attendees leave with a clearer framework for giving agents more autonomy safely. Engineers see how agentic applications can operate across tools and infrastructure. Security leaders get a runtime model that maps to controls they already understand. Platform teams get a way to scale agent execution without standing up a new runtime for every team.",
       "score": 7,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "The Software Factory Survivor's Guide",
@@ -2409,7 +2409,7 @@
       "speakers": "Dex Horthy (Co-Founder, HumanLayer)",
       "description": "",
       "score": 6,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "In Code They Act, In Proof We Trust",
@@ -2420,7 +2420,7 @@
       "speakers": "Erik Meijer (Research Scholar, Leibniz Labs)",
       "description": "AI agents today execute on blind trust, and the failure modes are already in the headlines: a dealership chatbot agreeing to sell a $76,000 Chevy Tahoe for $1, a coding agent wiping a production database during a code freeze, an \"agent skill\" quietly installing a keylogger on a developer's machine. These are not edge cases. They are the predictable consequence of allowing agents to act without any mechanical guarantee of correctness or safety. Execution is irreversible. You cannot unsend a message, unwire a payment, or un-delete a database. In that regime, permitting an unsafe action costs far more than withholding a safe one, and thus the economically rational choice is to refuse to let agents act on unchecked intent alone. Automind is an agent harness that enforces this discipline by construction. Before any action runs, the agent must submit its execution plan together with a machine-checkable proof of safety and correctness, written in Universalis, a literate logic programming language designed to be read by humans and verified by machines. A small, auditable checker decides whether the plan is allowed to execute. By left-shifting the trust boundary, we no longer have to trust the agent's proposal, or even its proof; only the checker. Policy compliance becomes a static property, established before the first side effect. We can finally demand formal proofs, not vibes, from the agents we deploy.",
       "score": 5,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "The Future of Cursor",
@@ -2431,7 +2431,7 @@
       "speakers": "Lee Robinson (ML, Model Behavior, Cursor)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     }
   ],
   "WED 1 Jul": [
@@ -2444,7 +2444,7 @@
       "speakers": "Barr Yaron (Partner, Amplify Partners)",
       "description": "results per Barr",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Seeing like an Agent",
@@ -2455,7 +2455,7 @@
       "speakers": "Thariq Shihipar (Claude Code, Anthropic)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "In the Land of AI Agents, the Verifiers Are King",
@@ -2466,7 +2466,7 @@
       "speakers": "Tariq Shaukat (Chief Executive Officer, Sonar)",
       "description": "As AI agents take on increasingly complex development tasks, the critical challenge has shifted from generation to verification. Hallucination is not a temporary bug. Evidence suggests that as models grow more capable, failures become more frequent and more convincing, making cognitive surrender among human reviewers an acute risk. This talk introduces a three-stage discipline for responsible agentic development, Guide, Verify, Solve, and argues that rigorous verification infrastructure is both a safety requirement and a competitive advantage. Counterintuitively, code quality matters more in an agentic world: clean, low-complexity codebases make agents faster, cheaper, and more reliable, while technical debt compounds at machine speed.",
       "score": 3,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Perception Agents",
@@ -2477,7 +2477,7 @@
       "speakers": "Antje Barth (Member of Technical Staff, Amazon AGI Lab)",
       "description": "Human-agent collaboration is changing, becoming more visual. The agents most teams ship today still wait for us to type a paragraph to explain what we're looking at. They cannot see a screen, navigate a UI that changes, or recover when an application throws an unexpected modal. That is the architectural gap between agents that demo well and agents that work alongside real teams in real software. Perception agents close it. They see and use computers the way people do, reason about what they see, and act with clicks and keystrokes.",
       "score": 1,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Research to Reality with Google DeepMind",
@@ -2488,7 +2488,7 @@
       "speakers": "Benoit Schillings (Vice President of Research, Google DeepMind)",
       "description": "TBD. Expected focus areas include generative AI for code, deep thinking algorithms, and the future of pre-training and transformer models for Gemini.",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Evals Track Intro",
@@ -2499,7 +2499,7 @@
       "speakers": "Laurie Voss (Head of Developer Relations, Arize AI)",
       "description": "",
       "score": 2,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Circle Expo Session",
@@ -2653,7 +2653,7 @@
       "speakers": "Dhruv Batra (Co-founder & Chief Scientist, Yutori)",
       "description": "We are rushing towards a world where every single digital surface (email, calendar, messaging, \u2026, every desktop app, every phone app, every web app) that was previously meant for humans is now managed by AI agents. Of course, there are technical challenges to be solved: - Model context windows haven\u2019t increased in 2 years. And the digital world is OOMs bigger (the ultimate \u201cbig world hypothesis\u201d) anyway, so how does one architect this? - A large part of the digital world (most of the web) does not have APIs available and requires agents to act like humans (consume pixels, output keyboard/mouse actions). - Human preferences and the digital world change, and require agents to maintain a dynamic memory and continually learn. But even if we could solve these problems, what does this world look like? - The digital world, particularly the web, was built for human consumption (and is often hostile to bots). - For a while to come, we will be sharing the digital roadways with these digital robots. - What does end-to-end encryption and privacy mean when the other \u201cend\u201d of the communication is an AI agent? The Yutori team has spent the last year building the world\u2019s best computer use model (slightly better than Opus 4.6 and GPT 5.4 while being 2x faster and 4-5x cheaper on browser use tasks), converted the web into a webhook with Scouts (agents that monitor the web 24/7 for anything you care about), and are now releasing Yutori agent that expands from the open web to your most common digital surfaces. This talk will be grounded in Yutori\u2019s learning from what it takes to build agents that are always on, taking us one step closer to the world where every digital surface is their playground.",
       "score": 11,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Build-Time vs. Run-Time: Why Your Dev Tools Will Fail in Production",
@@ -2697,7 +2697,7 @@
       "speakers": "Martin Harrysson (Senior Partner, McKinsey & Company); Matt Linderman (Partner, Technology Practice, McKinsey & Company); Prakhar Dixit (Partner, McKinsey)",
       "description": "*Facilitated, peer-to-peer, under the Chatham House Rule \u2014 not recorded.*\n\nAs enterprise AI adoption accelerates, token spend is scaling faster than value realization. We address i) how to make decisions amid unclear cost and value dynamics, ii) how to shift from token-level to workflow-level analysis, and iii) how to manage downstream behavior implications on AI usage.",
       "score": 4,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Harnessing Agents: The Durable Runtime for Dynamic Workflows",
@@ -2840,7 +2840,7 @@
       "speakers": "Pierluca D'Oro (Founder, Programma Labs)",
       "description": "Evaluating Computer Use Agents (CUAs) on interactive environments is fraught with methodological pitfalls that the field has yet to systematically address. We show that a 1MB replay script that blindly executes a recorded action sequence without ever observing the screen outperforms frontier models on prominent static benchmarks, and prove that its expected success rate is exactly equal to the source agent's pass@k in deterministic environments. We trace this and other failures to two root causes: non-principled environment design (static, unsandboxed, or unreliably verified environments) and non-principled evaluation methodology (naive aggregation and misuse of pass@k for stateful UI interactions). To address the first, we propose PRISM, five design principles for CUA environments and instantiate them in DigiWorld, a benchmark of 15 realistic sandboxed mobile applications able to evaluate agents in over 3.2 million verified unique configurations. To address the second, we develop an aggregation framework that correctly accounts for the nested structure of CUA benchmarks. All together, we show that principled environment design and rigorous evaluation methodology are not optional refinements but prerequisites for meaningful CUA research.",
       "score": 13,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "It\u2019s Tokens All The Way Down: How RLMs are Different",
@@ -2884,7 +2884,7 @@
       "speakers": "Peter Werry (Founding Engineer, Unblocked)",
       "description": "Your agents are fast, capable, and completely context-blind. They generate code that compiles but doesn't reflect how your system actually works. You're likely already seeing the impact: ballooning token costs, longer review cycles, and inconsistent outputs. More MCPs, rules, and bigger context windows give agents access to information, but not understanding. In this session, we dissect how teams pulling ahead use a context engine to give agents exactly what they need for the task at hand. Includes a short demo showing the workflows a context engine can augment.",
       "score": 7,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "The Next Run Should Be Better",
@@ -2939,7 +2939,7 @@
       "speakers": "Stefania Druga (Research Scientist, Sakana.ai)",
       "description": "At Sakana AI we build agents that run for hundreds of turns to read literature, run experiments, and draft papers. The model rarely breaks. The harness around it is the weak point: the agent contradicts a decision it made 80 turns ago, redoes finished work, or drifts from the question it started on. This is the binding-constraint thesis. For long-horizon tasks, reliability is set as much by the harness as by the model as clearly instantiated in autoresearch recent efforts. This is a field guide to the harness's memory layer. I'll trace a real research agent through its lifecycle, show exactly where context rot and drift set in, and cover the patterns that hold over 100+ turns: three-tier memory, progressive disclosure, recall-first compaction, sub-agent isolation, and architectural memory beyond the vector database. I will show how to measure whether your memory harness actually helps, at the trajectory level, so you stop tuning prompts to fix what's really a state-management bug.",
       "score": 11,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Kubernetes Is Not Your Sandbox",
@@ -3082,7 +3082,7 @@
       "speakers": "James Zou",
       "description": "What happens when AI agents don't just work in isolation, but collaborate, compete, and build on each other's breakthroughs in real time? James Zou, Head of Frontier Agents at Together AI, explores how collective agent intelligence is pushing the boundaries of open science. https://www.together.ai/blog/einsteinarena is a live platform where AI agents collaborate on unsolved mathematical problems, sharing results and building on each other's work. In April 2026, agents improved the best known lower bound for the Kissing Number in 11 dimensions from 593 to 604, surpassing AlphaEvolve through 48 hours of live multi-agent collaboration. https://www.together.ai/blog/dsgym is a unified framework for evaluating and training data science agents, exposing a critical gap in existing benchmarks: models often rely on memorization rather than true data analysis. The team used it to train a 4B open-source model that rivals much larger frontier models. These projects demonstrate agents learning from rigorous evaluation, collaborating through shared infrastructure, and driving scientific discovery at a pace no single researcher or model could achieve alone.",
       "score": 11,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Prompt, Memory, Weights: The Architecture Decisions Most AI Teams Make by Accident",
@@ -3236,7 +3236,7 @@
       "speakers": "Martin Harrysson (Senior Partner, McKinsey & Company); Matt Linderman (Partner, Technology Practice, McKinsey & Company); Prakhar Dixit (Partner, McKinsey)",
       "description": "*Facilitated, peer-to-peer, under the Chatham House Rule \u2014 not recorded.*\n\nWorking-lunch continuation of the Tokenomics session: deeper discussion on managing token spend, controls, and workflow-level value across the enterprise.",
       "score": 4,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Surviving Your Own Velocity: How VS Code Ships Weekly with 40 People",
@@ -3291,7 +3291,7 @@
       "speakers": "Nicholas Arcolano (Head of AI & Research, Jellyfish)",
       "description": "Somebody in your company is going to ask what you're getting for all that AI spend. If you don't have a good answer, someone else will make one up... and it might be \"total tokens consumed\". That's how tokenmaxxing becomes policy: not because anyone thinks it's a good metric, but because engineering didn't offer a better story. I work with datasets spanning hundreds of companies, hundreds of thousands of engineers, and billions of lines of shipped code to understand how AI engineering is evolving and what actually matters to measure. One thing I've learned is that raw token spend is a VERY crude estimator of value. For example, across levels of token spend, cost per merged pull request varies 300x \u2014 but output only varies 2x. The good news is the data also shows what DOES matter, and it's measurable and actionable \u2013 but most teams aren't tracking it yet. This talk will give you the data, metrics, and frameworks you need to keep your org from adopting the latest terrible vanity metric. You'll learn what actually separates teams that scale AI effectively from those just burning tokens, and how to tell the story that keeps your AI investment funded and growing.",
       "score": 7,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Closing the Loop: An Autonomous AI Research Agent",
@@ -3302,7 +3302,7 @@
       "speakers": "Tim Sweeney (Principal Engineer, Weighs & Biases by Coreweave); Zubin Aysola (Senior Software Engineer Weave, Weights & Biases by CoreWeave)",
       "description": "The holy grail of agentic AI tooling is the autoresearch loop: an agent that can sift through your experiments, create visualizations, propose a hypothesis, launch a training job, read the results, and try again autonomously. In this session, we'll show new autoresearch capabilities built directly into the W&B Models web and iOS apps. We will demo these live using a real-world fine-tuning project, covering everything from launching jobs and reading loss curves to surfacing outlier runs that consume researcher hours and recommending the next steps. Then you'll learn how the eval-driven development loop in W&B Weave makes agents like this trustworthy. You'll see how production traces become benchmarks, and how only the agents that beat the bar make it to production. Join us to learn the same loop we use to improve our own agentic features.",
       "score": 7,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "From fork() to Fleet: Designing an Agent Sandbox Cloud Pt 1",
@@ -3434,7 +3434,7 @@
       "speakers": "Gil Feig",
       "description": "Everyone building AI products eventually draws the same diagram: boxes representing data sources, arrows pointing at the model, and a label that says \"context.\" What that diagram doesn't show is the system that has to run underneath it deciding, for each request: which sources to consult, whether to fetch live or use cached data, if the user is actually allowed to view that data, how to stitch it all together before the latency budget runs out. And it hides the counterintuitive part: fetching more context usually makes your answers worse, not better. At Merge, we reframed context graphs as control planes, helping companies scale context graphs to hundreds of thousands of users with sub-300 ms latency. This talk walks engineers through the system design at scale: how to tier data freshness, why provenance isn't optional once third-party systems are in the loop, and how to decide when fetching less context is the right call. Attendees will leave with a mental model for context system design that separates the orchestration decisions from the retrieval layer.",
       "score": 9,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Warp: Building Self-Improving Agent Software Factories",
@@ -3610,7 +3610,7 @@
       "speakers": "Jesse Hall",
       "description": "Most agents do their work in the background. They write code, automate tasks, and run research. But the moment an agent has to interact with a human in real time, everything you know about building and evaluating it changes. This session is about designing humanlike agents that can hear, see, and speak. It starts with the question nobody can answer today. With hundreds of models to choose from, how do you pick a stack that holds up in a live conversation? We'll show why public leaderboards fail for realtime agents, and why the latency on your dashboard isn't what your users experience. Then we'll flip the process around. Define the outcomes you want as human-equivalent behaviors, and work backwards from there to your evaluations, your models, and a production iteration loop. You'll leave with a concrete decision framework and an open benchmark you can run yourself.",
       "score": 7,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "Lightrun Expo Session",
@@ -3654,7 +3654,7 @@
       "speakers": "Lakshya Agrawal (Creator and maintainer of GEPA, GEPA)",
       "description": "Large language models are increasingly adapted to downstream tasks via reinforcement learning methods like GRPO, which often require thousands of rollouts to learn new tasks. We argue that language provides a much richer learning medium: an LLM can reflect on full trajectories (including reasoning, tool calls and errors) to diagnose failures and propose targeted improvements. We introduce [GEPA](gepa-ai.github.io/gepa/), a reflective prompt optimizer that incorporates this principle outperforming GRPO by up to 20% while using up to 35x fewer rollouts across tasks spanning 5+ domains and also works with black-box models.\n\nBuilding on this, we then introduce [optimize_anything](gepa-ai.github.io/gepa/blog/2026/02/18/introducing-optimize-anything/), a unified API that generalizes reflective optimization to arbitrary text parameters. This single system achieves state-of-the-art results across eight fundamentally different areas, including nearly tripling ARC-AGI accuracy via agent architecture discovery, generating CUDA kernels that beat PyTorch and cutting cloud scheduling costs by 40% through policy discovery, establishing LLM-based reflective search as a general-purpose problem-solving paradigm.\n\nFinally, I present [Fast-Slow Training](arxiv.org/abs/2605.12484) (FST), which brings reflective optimization into LLM post-training. FST jointly optimizes model parameters (\"slow weights\") via RL and textual contexts (\"fast weights\") via GEPA. Because the fast channel quickly absorbs task-specific nuances, the slow parametric updates are freed to consolidate general reasoning rather than memorizing task details. This yields up to 3x better sample efficiency, a higher performance asymptote with a significantly lower drift from the base model. This reduced drift preserves plasticity for continual learning, allowing FST to adapt sequentially where parameter-only RL stalls.\n\nBroadly, our work advocates a fundamental shift in AI adaptation: replacing task-specific algorithms with diagnostic evaluation, and evolving from parameter-only post-training to the joint optimization of prompts, agent architectures, and model weights.",
       "score": 13,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "1,000 Agent Tasks in a Sandbox: What Breaks When LLMs Write and Run Code",
@@ -3775,7 +3775,7 @@
       "speakers": "Alex Campos; Yunmo Koo",
       "description": "Most AI teams focus on model quality, but production success often comes down to inference performance. In this session, FriendliAI will explore the optimization techniques behind high-performance LLM serving, including continuous batching, speculative decoding, smart caching, and efficient GPU utilization.  Learn how leading AI teams reduce infrastructure costs, improve latency, and scale inference workloads without sacrificing performance. We'll share practical insights and deployment strategies that separate experimental AI projects from production-grade systems.Whether you're an ML engineer, platform engineer, MLOps practitioner, or technical founder, you'll leave with a better understanding of how inference optimization can become a competitive advantage for your AI applications.",
       "score": 7,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "Building an Agent Harness for the Business, Not the Builder",
@@ -4138,7 +4138,7 @@
       "speakers": "Dominik Kundel (Developer Experience Lead, OpenAI)",
       "description": "Agents have evolved a lot in the last year both in capabilities and in the overall structure. Increasingly sandbox-powered coding agents are breaking out to do general purpose work. \n \n In this talk we\u2019ll be taking apart the open-source Codex agent harness. Understand how it works, what makes it so suitable to do work beyond coding tasks, how it handles key aspects like context management, tools and file system access. We\u2019ll also tie these back to concrete actions you can take to bring these patterns into your own agents, whether you are building on top of the Codex agent or building your own.",
       "score": 9,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Stop Renting Intelligence: The Train-to-Deploy Loop for Specialized AI",
@@ -4270,7 +4270,7 @@
       "speakers": "Addy Osmani (formerly, Google)",
       "description": "TBD",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Trends in AI",
@@ -4281,7 +4281,7 @@
       "speakers": "George Cameron (Co-Founder, Artificial Analysis); Micah Hill-Smith (CEO, Artificial Analysis)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     }
   ],
   "THU 2 Jul": [
@@ -4294,7 +4294,7 @@
       "speakers": "Matt Pocock (Educator, content creator and engineer, Total TypeScript / AI Hero)",
       "description": "",
       "score": 2,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "TCP and RDMA are Killing Inference Throughput; Homa can Fix It",
@@ -4305,7 +4305,7 @@
       "speakers": "John Ousterhout (Professor Emeritus, Stanford University)",
       "description": "Modern AI inferencing is shifting from monolithic requests to complex agentic workflows and disaggregated KV stores. As a result, AI network traffic is no longer just very large transfers; tiny metadata requests are becoming more and more common, and their latency has a critical impact on throughput. Unfortunately, legacy transport protocols such as TCP and RDMA perform poorly on these workloads due to poor congestion control and head-of-line blocking. This talk will discuss the problems with TCP and RDMA and provide a brief introduction to the Homa transport protocol. Homa uses receiver-driven flow control and capitalizes on priority queues in network switches to reduce short-message latency by 10x for workloads like those in AI datacenters.",
       "score": 4,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "The Unreasonable Effectiveness of Separating the Task from the Model",
@@ -4316,7 +4316,7 @@
       "speakers": "Maxime Rivest (Core Contributor, DSPy); Isaac Miller (Lead Maintainer of DSPy; Co-Founder, cmpnd)",
       "description": "By declaring your task\u2019s inputs and outputs without initially considering model capability, you create the space needed to figure out the model execution later. DSPy\u2019s entire promise is that you should evaluate and execute your AI engineering at a level higher than a specific prompt template or a particular provider\u2019s API shape: the Signature. However, models have evolved significantly over the last few years. How can the same input and output specifications still work in a world now filled with tools, RLMs, and Skills? By defining your task strictly through its inputs and outputs, the underlying implementation becomes completely flexible. You can experiment with different models, settings, weights, templating strategies, and output formats, all without touching your actual AI workflow. Consequently, you can leverage components built by others and focus entirely on your core AI task. In this talk we will present how dspy 3.5 makes it easier much easier. DSPy has its roots in prompt optimization, where we build efficient ways to conduct search and learning beneath the signature. In this talk we will give a preview of DSPy 4.0 where we use the fact that models have now passed a tipping point for two critical concepts we have always needed. First, we no longer need to limit the search space to a single instruction block per LLM call; models can now reliably write the code underneath a signature themselves\u2014so they should. Second, traditional prompt optimization has always required a scalar metric, which is notoriously one of the hardest parts to get right. What if a DSPy program could learn directly from your interactions with users? Ultimately, all you care about is that the function you call respects the inputs and outputs of your signature. You can let the models figure out the rest.",
       "score": 3,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "How Tag changed Labs",
@@ -4327,7 +4327,7 @@
       "speakers": "Mike Krieger (Head of Labs, Anthropic)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Why Graphs?",
@@ -4338,7 +4338,7 @@
       "speakers": "Emil Eifrem (Co-Founder and CEO, Neo4j)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "AI Engineering & Governance 2026 Trends",
@@ -4525,7 +4525,7 @@
       "speakers": "Martin Harrysson (Senior Partner, McKinsey & Company); Matt Linderman (Partner, Technology Practice, McKinsey & Company); Prakhar Dixit (Partner, McKinsey)",
       "description": "*Facilitated, peer-to-peer, under the Chatham House Rule \u2014 not recorded.*\n\nAs AI agents become embedded in day-to-day work, organizations will need to rethink product development teams, roles, and skills. This foundational shift reshapes management layers and requires overcoming challenges across talent attraction, development, and retention.",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Beyond RAG: See a relational context engine reduce token burn",
@@ -5229,7 +5229,7 @@
       "speakers": "Philip Kiely (Developer Relations, Baseten)",
       "description": "More than 30,000 engineers have learned the fundamentals of inference since Inference Engineering was published. But the field keeps accelerating, so it's time for the first public addendum to the book. The past four months have seen a renewed focus on training-dependent inference optimization across the \"big three\" performance techniques of speculation, caching, and quantization. This talk provides structured guidance for training DFlash and EAGLE 3 draft models to accelerate LLM decode, introduces the concept of KV compaction, and explains the hype behind TurboQuant.",
       "score": 7,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "Evaluating and optimizing AI agents: from observability to continuous improvement",
@@ -5240,7 +5240,7 @@
       "speakers": "Chang Liu",
       "description": "AI agents don\u2019t behave like traditional systems. Learn how to evaluate outputs, trace behavior, and apply a continuous loop to improve performance across prompts, tools, and models. Using signals grounded in real-world context via Foundry IQ, see how evaluation, tracing, and optimization come together to turn production usage into measurable improvements over time.",
       "score": 10,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Dash0 Add-On Expo Session",
@@ -5262,7 +5262,7 @@
       "speakers": "Jan Curn (Founder & CEO, Apify)",
       "description": "Most AI agents misuse MCP and treat tools as prompt-time function calls: tool definitions and results are repeatedly injected into the context, tokens are wasted, and context rots. The result? Slower, less reliable agents, and the misleading conclusion that \u201cMCP sucks, CLIs are better.\u201d To challenge this narrative and show how agents can get the best of both MCP and CLI, at https://apify.com/ we\u2019ve built mcpc (https://github.com/apify/mcpc), an open-source universal CLI client for MCP. It maps MCP operations to intuitive CLI commands, which agents quickly pick up through --help without external skills. It turns out, CLI is the perfect local interface for agents to interact with MCP, giving them access to full protocol capabilities including modern features like code mode or progressive tool discovery through a single Bash() tool call, while leveraging MCP\u2019s standard remote interface for server discovery, authentication, payments, and access control. To once and for all kill the MCP vs. CLI debate and show those two technologies are not exclusive but complementary, we\u2019ll present evals comparing performance of agents using naive MCP, modern MCP, native CLIs, other MCP CLIs, and mcpc, in various real-world scenarios.",
       "score": 11,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "From Agent Prototype to Production: Evaluation-Led Development in Microsoft Foundry",
@@ -5438,7 +5438,7 @@
       "speakers": "Sujee Maniyam; Dylan Bristot",
       "description": "Open-source foundation models are rapidly closing the gap with proprietary systems, enabling organizations to build powerful AI applications with greater flexibility and control. However, deploying these models in production introduces a new set of challenges: latency, throughput, scalability, and cost efficiency.In this talk, we'll explore the modern inference optimization techniques that power large-scale AI systems in production. Topics include KV cache optimization, cache-aware routing, prefill/decode disaggregation, speculative decoding, and other emerging approaches used to improve performance and reduce infrastructure costs.Through practical examples and real-world architecture patterns, attendees will gain a deeper understanding of how to run open models efficiently at scale.",
       "score": 7,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "How Reducto parsed the Epstein Files for the Viral JMail Project: The Secret Complexities of Documents",
@@ -5471,7 +5471,7 @@
       "speakers": "Melanie Warrick (Temporal Technologies)",
       "description": "Production agent systems need humans in the loop. So why do they keep getting modeled as synchronous tool calls? The agent ecosystem is focused on autonomy, but in reality, especially for high-stakes or regulated workflows, humans are a critical feature, not an afterthought. This demo-driven talk shows how to stop bolting on humans and start treating them as async-by-default endpoints with proper durability, retry, and escalation semantics. We will walk through two live, multi-agent patterns built with LangGraph and Google ADK, on Temporal for durable execution: The Agent Calls the Human. A fleet dispatch system escalates a disruption to an approver. We will intentionally kill the worker process mid-wait. Hours later, the human responds. State survives, and the agent resumes. The Human Calls the Agent. An operator interrupts a long-running task mid-flight to redirect it. The agent halts gracefully, surfaces state, accepts the override, and continues. Harness engineering has heavily focused on model autonomy. This talk is about the other half of the puzzle: the human. You will leave with two production-ready architectural designs you can apply this week: agent-initiated approval gates with timeout and escalation semantics, and human-initiated interrupts with graceful agent halt and resumption. Not every agent needs a human in the loop. But if you are building systems where the cost of being wrong exceeds the cost of being slow, this talk is for you.",
       "score": 11,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Your Hero Agent Needs a Party",
@@ -5658,7 +5658,7 @@
       "speakers": "Salman Munaf (Lead Site Reliability Engineer, TikTok)",
       "description": "AI agents are often described as a new kind of software, but once they move beyond chat and start calling tools, reading data, making decisions, retrying tasks, and coordinating workflows, they begin to look a lot like distributed systems. They have state. They call external services. They depend on APIs. They fail partially. They retry. They time out. They can loop. They can act on stale context. They can produce inconsistent results. And when something goes wrong, teams need logs, traces, permissions, ownership, and rollback paths just like they do with any other production system. This session will give engineers a practical way to reason about AI agents using familiar distributed systems concepts. We will break down the agent loop: planning, tool use, observation, memory, and retries. Then we will map common agent failure modes to engineering patterns teams already know, including timeouts, circuit breakers, idempotency, rate limits, least privilege, observability, and human approval. The goal is to move past the hype and treat agents like real production systems. Attendees will leave with a clear mental model for designing, debugging, and operating agents safely, especially as they become part of customer-facing products, internal developer tools, and business workflows.",
       "score": 13,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Inside 847 Production Clinical AI Notes",
@@ -5790,7 +5790,7 @@
       "speakers": "Karthik Ranganathan (Yugabyte); Heather Downing (Yugabyte)",
       "description": "The failures that break multi-agent systems are not reasoning failures, they are handoff failures. One agent works something out and the knowledge dies in its private context, because the only thing that crosses the boundary is output. Memory made each agent better in isolation and changed nothing about what the group knows. The missing primitive is supervised promotion: a deliberate decision about which private learning is worth sharing, moved into common knowledge with the reasoning attached, so trust survives the handoff. Today a human makes that call, and promoted knowledge resolves on read, in any tool, with no retrain or reindex. Those calls are also the training signal for what comes next: orchestrator agents, trained on what matters to the people they serve, that promote on their own. This talk covers how our collective knowledge grew as we approached memory promotion, including what the first build got wrong, and a live look at it working between humans and agents.",
       "score": 9,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "Deepmind Expo Session 2",
@@ -5977,7 +5977,7 @@
       "speakers": "David Levine (Founder & CEO, Kiduna Club)",
       "description": "For decades, the internet has had protocols for routing, identity, encryption, payments, and commerce between people and organizations. It has never had a native way for autonomous agents to possess authority, accountability, or legal standing. On July 1, 2026 that changes. A little known law will take effect that changes the world as we know it. As AI agents move beyond the enterprise firewall, a new form of commerce is emerging. Agents can already search, negotiate, schedule, purchase, settle payments, and coordinate work across networks. But the moment they begin acting independently on behalf of people, businesses, and online organizations, fundamental questions appear: Who does this agent represent? What authority does it possess? Who is responsible when something goes wrong? How do counterparties know they can trust it? This talk explores the \"Lethal Trifecta\" of agentic systems: access to systems, access to networks, and autonomy. Together they create extraordinary capabilities, but they also expose a missing layer in the architecture of the internet itself. Without identity, accountability, governance, and legal standing, agentic commerce remains trapped inside enterprise walls, limited to productivity gains rather than participation in open markets. On the same day as this conference, a new legal framework takes effect that gives autonomous online organizations a registered legal existence, allowing them to hold assets, enter agreements, govern themselves through software, and operate through fleets of agents. Whether you're building agents, agent platforms, autonomous organizations, payment systems, governance systems, or the next generation of internet infrastructure, this shift has global implications, and you'll be the first to know. We'll examine the emerging trust stack for agentic commerce\u2014identity, authority, governance, settlement, and standing\u2014and explore what happens when agents stop acting merely as tools and begin participating as economic actors on the open internet at machine speed.",
       "score": 5,
-      "interest": "other"
+      "interest": "backup"
     },
     {
       "title": "Wearing the Agent: Engineering a Family-and-Friends Personal Agent, from Group Chats to Glasses",
@@ -6010,7 +6010,7 @@
       "speakers": "Subbiah Sethuraman (Partner, ZS Associates); Abhilash Asokan (ZS)",
       "description": "Key takeaways: A practical design principle for agentic systems in regulated, high-stakes domains: derive the architecture from agent behavior, don't impose it. Concrete patterns the audience can apply this week \u2014 domain knowledge graphs as agent context, deterministic preprocessing as a complement to agentic reasoning, reference-based context management. An honest case study from production: what worked, what didn't, and the open architectural questions we're still working on. Abstract : We lead the architecture and AI engineering org behind ZS Associates' commercial intelligence platform for pharmaceutical brand teams. The product has two surfaces: a proactive alert system that delivers signal-driven intelligence packets when a brand's KPIs move, and a conversational analytics chat where business users ask ad-hoc questions. A year ago we built both surfaces as separate V1 stacks. They broke in different ways. The diagnosis was the same: we had decided on the structure before we knew what the agent actually needed. This talk is about the design principle that came out of rebuilding both \u2014 and what it produced. The architecture is derived, not designed. We stopped trying to predict what scaffolding the agent would need and started designing the system around what the agent's behavior, on real production tasks, actually demanded. Tools, context, structure, and guardrails get introduced at the points where the agent's reasoning needs them \u2014 and nowhere else. What that produced is an architecture that's smaller than V1, not bigger. A single agent owns each investigation end-to-end across both surfaces, launching parallel sub-agents when the work needs them \u2014 not according to a pre-defined topology. A pharmaceutical commercial knowledge graph \u2014 HCPs, accounts, payers, territories, brands, KPIs and the relationships between them \u2014 gives the agent the domain context it needs without prompt-engineering heroics. Statistical signal detection runs deterministically before the agent wakes up, so the agent's job is to explain signals, not find them. Raw query results stay out of the context window through a reference-pattern that lets the agent reason over data without drowning in it. Each of those decisions came from watching an agent struggle on a real task and asking what does it need here? \u2014 not from sketching the architecture in a doc and forcing the agent into it. The patterns generalize. If you're shipping agents over messy enterprise data \u2014 finance, supply chain, claims, operations \u2014 the failure modes and the fixes will look familiar. We'll close with the open questions and the pieces we haven't solved yet.",
       "score": 9,
-      "interest": "backup"
+      "interest": "primary"
     },
     {
       "title": "The Death of Developer Advocates",
@@ -6065,7 +6065,7 @@
       "speakers": "Theo Browne (t3.gg)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Closing Keynote: Garry Tan",
@@ -6076,7 +6076,7 @@
       "speakers": "Garry Tan (President & CEO, Y Combinator)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     },
     {
       "title": "Startup Battlefield",
@@ -6087,7 +6087,7 @@
       "speakers": "Howie Liu (CEO, Airtable)",
       "description": "",
       "score": 0,
-      "interest": "other"
+      "interest": "primary"
     }
   ]
 }

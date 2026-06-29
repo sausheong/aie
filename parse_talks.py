@@ -147,8 +147,36 @@ def parse_talks(path):
     return days
 
 
+def guarantee_picks(days):
+    """For every timeslot with >1 session, ensure at least one primary and one backup."""
+    for day_name, sessions in days.items():
+        by_time = {}
+        for s in sessions:
+            by_time.setdefault(s["time"], []).append(s)
+
+        for time, slot in by_time.items():
+            if len(slot) == 1:
+                # Only one option — mark it primary, nothing left for backup
+                slot[0]["interest"] = "primary"
+                continue
+
+            sorted_slot = sorted(slot, key=lambda s: s["score"], reverse=True)
+
+            # Ensure at least one primary (top scorer)
+            if not any(s["interest"] == "primary" for s in slot):
+                sorted_slot[0]["interest"] = "primary"
+
+            # Ensure at least one backup (top scorer that isn't already primary)
+            if not any(s["interest"] == "backup" for s in slot):
+                for s in sorted_slot:
+                    if s["interest"] != "primary":
+                        s["interest"] = "backup"
+                        break
+
+
 def main():
     days = parse_talks("talks.md")
+    guarantee_picks(days)
     total = sum(len(s) for s in days.values())
     primaries = sum(1 for day in days.values() for s in day if s["interest"] == "primary")
     backups = sum(1 for day in days.values() for s in day if s["interest"] == "backup")
